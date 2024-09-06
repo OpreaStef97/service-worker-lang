@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Worker Intercept Example</title>
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        margin: 0;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #result {
+        width: 100%;
+        max-width: 600px;
+        overflow-x: auto;
+        overflow-y: scroll;
+        height: 500px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #current-language {
+        margin: 10px;
+        color: #007bff;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .message {
+        margin: 10px;
+        padding: 10px;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        color: #155724;
+      }
+
+      .message.de {
+        /* transparent black */
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #000;
+      }
+
+      .message.en {
+        /* transparent blue */
+        background-color: rgba(0, 0, 255, 0.1);
+        border: 1px solid rgba(0, 0, 255, 0.1);
+        color: #007bff;
+      }
+
+      .message.de::after {
+        /* flag for DE */
+        content: '🇩🇪';
+        margin-left: 10px;
+        font-size: large;
+      }
+
+      .message.en::after {
+        /* flag for EN */
+        content: '🇬🇧';
+        margin-left: 10px;
+        font-size: large;
+      }
+
+      #select-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+
+      .select-item {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .select-item:hover {
+        background-color: #0056b3;
+      }
+
+      .select-item.selected {
+        background-color: #0056b3;
+      }
+
+      .select-item.selected:hover {
+        background-color: #003366;
+      }
+    </style>
+    <h1 id="current-language">Current Selected Language: <span class="flag">🇬🇧</span></h1>
+    <button id="fetch-button">Fetch Data</button>
+    <button id="language-button">Change to DE</button>
+    <div id="select-container"></div>
+    <pre id="result"></pre>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

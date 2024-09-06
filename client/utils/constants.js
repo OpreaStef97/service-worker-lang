@@ -1,0 +1,1 @@
+export const PATHS_TO_LISTEN = ['/', '/check-lang']
